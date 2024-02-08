@@ -8,48 +8,24 @@ import time
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
+  if n <= 1:
+      return 1
+  else:
+      return a * simple_work_calc(n // b, a, b) + n
 
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
 
 def work_calc(n, a, b, f):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
+  if n <= 1:
+      return 1
+  else:
+      return a * work_calc(n // b, a, b, f) + f(n)
 
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
 
 def span_calc(n, a, b, f):
-	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
-
+  if n <= 1:
+      return f(1)
+  else:
+      return span_calc(n // b, a, b, f) + f(n)
 
 
 def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000]):
